@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nadir Khan — Data Analyst & </title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c14;
+    --bg2: #0d1320;
+    --bg3: #111827;
+    --accent: #00e5ff;
+    --accent2: #39ff14;
+    --accent3: #ff6b35;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --border: rgba(0,229,255,0.15);
+    --card-bg: rgba(13,19,32,0.85);
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-head: 'Syne', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(8,12,20,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo { font-family: var(--font-head); font-weight: 800; font-size: 1.2rem; color: var(--accent); letter-spacing: -0.02em; }
+  .nav-logo span { color: var(--text); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--accent); transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+  .mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: rgba(8,12,20,0.98); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; z-index: 99; flex-direction: column; gap: 1.2rem; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--text); text-decoration: none; font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+  .mobile-menu a:hover { color: var(--accent); }
+
+  section { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 7rem;
+    max-width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 40px; height: 1px; background: var(--accent); }
+  .hero-name { font-family: var(--font-head); font-size: clamp(3rem, 8vw, 7rem); font-weight: 800; line-height: 1; letter-spacing: -0.04em; color: var(--text); margin-bottom: 0.3rem; }
+  .hero-name .accent { color: var(--accent); }
+  .hero-title { font-family: var(--font-head); font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 400; color: var(--muted); margin-bottom: 1.5rem; }
+  .typewriter { display: inline-block; color: var(--accent2); border-right: 2px solid var(--accent2); animation: blink 0.8s step-end infinite; padding-right: 4px; }
+  @keyframes blink { 50% { border-color: transparent; } }
+  .hero-desc { max-width: 580px; color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 2.5rem; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 0.75rem 1.8rem; font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 3px; cursor: pointer; transition: all 0.25s; border: none; }
+  .btn-primary { background: var(--accent); color: #000; font-weight: 700; }
+  .btn-primary:hover { background: #fff; transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .btn-outline:hover { background: rgba(0,229,255,0.08); transform: translateY(-2px); }
+  .hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--muted); font-size: 0.7rem; letter-spacing: 0.1em; animation: float 2.5s ease-in-out infinite; }
+  .hero-scroll::after { content: ''; display: block; width: 1px; height: 50px; background: linear-gradient(to bottom, var(--accent), transparent); }
+  @keyframes float { 0%,100%{transform: translateX(-50%) translateY(0);} 50%{transform: translateX(-50%) translateY(-8px);} }
+
+  .section-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.6rem; }
+  .section-label::before { content: '//'; color: var(--muted); }
+  .section-title { font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; color: var(--text); margin-bottom: 3rem; }
+  .section-title span { color: var(--accent); }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center; }
+  .about-avatar { width: 200px; height: 200px; border-radius: 4px; border: 2px solid var(--accent); background: var(--bg3); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 5rem; font-weight: 800; color: var(--accent); position: relative; box-shadow: 0 0 40px rgba(0,229,255,0.1), inset 0 0 30px rgba(0,229,255,0.05); }
+  .about-avatar::after { content: ''; position: absolute; inset: 6px; border: 1px solid rgba(0,229,255,0.2); border-radius: 2px; }
+  .about-text p { color: var(--muted); font-size: 0.9rem; line-height: 1.9; margin-bottom: 1.2rem; }
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .skill-tag { padding: 0.35rem 0.9rem; border: 1px solid var(--border); border-radius: 2px; font-size: 0.75rem; color: var(--accent); background: rgba(0,229,255,0.05); letter-spacing: 0.05em; transition: all 0.2s; }
+  .skill-tag:hover { background: rgba(0,229,255,0.12); border-color: var(--accent); }
+
+  /* EDA highlight badge */
+  .skill-tag-highlight {
+    padding: 0.35rem 0.9rem;
+    border: 1px solid rgba(57,255,20,0.4);
+    border-radius: 2px;
+    font-size: 0.75rem;
+    color: var(--accent2);
+    background: rgba(57,255,20,0.08);
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+    font-weight: 600;
+  }
+  .skill-tag-highlight:hover { background: rgba(57,255,20,0.15); border-color: var(--accent2); }
+
+  .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+
+  .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 4px; padding: 1.8rem; transition: all 0.3s; position: relative; overflow: hidden; }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+  .card:hover { border-color: rgba(0,229,255,0.4); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0,229,255,0.05); }
+  .card:hover::before { transform: scaleX(1); }
+  .card-num { font-size: 0.7rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1rem; opacity: 0.6; }
+  .card-title { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 0.7rem; line-height: 1.3; }
+  .card-desc { color: var(--muted); font-size: 0.82rem; line-height: 1.7; margin-bottom: 1.2rem; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+  .tag { padding: 0.25rem 0.65rem; font-size: 0.7rem; border-radius: 2px; letter-spacing: 0.05em; }
+  .tag-blue { background: rgba(0,229,255,0.1); color: var(--accent); border: 1px solid rgba(0,229,255,0.2); }
+  .tag-green { background: rgba(57,255,20,0.08); color: var(--accent2); border: 1px solid rgba(57,255,20,0.2); }
+  .tag-orange { background: rgba(255,107,53,0.1); color: var(--accent3); border: 1px solid rgba(255,107,53,0.2); }
+  .card-links { display: flex; gap: 0.8rem; }
+  .card-link { font-size: 0.75rem; color: var(--accent); text-decoration: none; letter-spacing: 0.05em; border-bottom: 1px solid rgba(0,229,255,0.3); padding-bottom: 1px; transition: border-color 0.2s; }
+  .card-link:hover { border-color: var(--accent); }
+
+  /* (Data Science section removed) */
+
+  /* Toolkit section */
+  .toolkit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .toolkit-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.8rem;
+    transition: all 0.3s;
+  }
+  .toolkit-card:hover {
+    border-color: rgba(0,229,255,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0,229,255,0.05);
+  }
+  .toolkit-icon { font-size: 1.8rem; margin-bottom: 1rem; line-height: 1; }
+  .toolkit-title { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; }
+  .toolkit-desc { color: var(--muted); font-size: 0.8rem; line-height: 1.7; margin-bottom: 1.4rem; min-height: 4.2em; }
+  .toolkit-bar { height: 4px; border-radius: 2px; background: rgba(255,255,255,0.08); overflow: hidden; }
+  .toolkit-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; }
+
+  #personal .card::before { background: var(--accent3); }
+  #personal .card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(255,107,53,0.06); }
+  #personal .card-num { color: var(--accent3); }
+
+  /* Certificates section accent */
+  #certificates .card { display: flex; flex-direction: column; }
+  #certificates .card::before { background: var(--accent); }
+  #certificates .card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0,229,255,0.06); border-color: rgba(0,229,255,0.35); }
+  #certificates .card-num { color: var(--accent); }
+  #certificates .cert-issuer { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.9rem; }
+  #certificates .cert-issuer strong { color: var(--text); font-weight: 600; }
+  #certificates .card-link { color: var(--accent); border-bottom-color: rgba(0,229,255,0.3); }
+  #certificates .card-link:hover { border-color: var(--accent); }
+  #certificates .cert-view-btn {
+    margin-top: auto;
+    align-self: flex-start;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,229,255,0.3);
+    padding-bottom: 1px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  #certificates .cert-view-btn:hover { border-color: var(--accent); }
+
+  /* Certificate modal/lightbox */
+  .cert-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(4,6,12,0.88);
+    backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .cert-modal.open { display: flex; }
+  .cert-modal-content {
+    position: relative;
+    max-width: 900px;
+    max-height: 88vh;
+    width: 100%;
+  }
+  .cert-modal-content img {
+    width: 100%;
+    height: auto;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 30px rgba(0,229,255,0.08);
+    display: block;
+    background: #fff;
+  }
+  .cert-modal-close {
+    position: absolute;
+    top: -42px;
+    right: 0;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .cert-modal-close:hover { border-color: var(--accent); color: var(--accent); }
+  @media (max-width: 640px) {
+    .cert-modal { padding: 1rem; }
+    .cert-modal-close { top: -38px; font-size: 0.7rem; padding: 0.4rem 0.8rem; }
+  }
+
+  /* Stat Pills */
+  .card-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 1.2rem;
+  }
+  .stat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.28rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    border: 1px solid rgba(255,107,53,0.25);
+    background: rgba(255,107,53,0.07);
+    color: var(--accent3);
+    white-space: nowrap;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .stat-pill .pill-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent3);
+    opacity: 0.6; flex-shrink: 0;
+  }
+  .card:hover .stat-pill { background: rgba(255,107,53,0.12); border-color: rgba(255,107,53,0.45); }
+
+  /* Compact Feature List */
+  .card-features-compact {
+    list-style: none;
+    margin: 0 0 1.3rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .card-features-compact li {
+    font-size: 0.79rem;
+    color: var(--muted);
+    line-height: 1.55;
+    padding-left: 1.1rem;
+    position: relative;
+    letter-spacing: 0.01em;
+  }
+  .card-features-compact li::before {
+    content: '▸';
+    position: absolute;
+    left: 0; top: 0;
+    color: var(--accent3);
+    font-size: 0.6rem;
+    line-height: 1.7;
+    opacity: 0.75;
+  }
+  .card-features-compact li strong { color: rgba(226,232,240,0.85); font-weight: 600; }
+
+  .card-divider { height: 1px; background: rgba(255,107,53,0.1); margin: 1rem 0; }
+
+  #personal .card-desc { font-size: 0.83rem; line-height: 1.75; color: #7a8fa8; margin-bottom: 0; }
+  #personal .card-title { font-size: 1.08rem; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
+  #personal .card-num { color: var(--accent3); }
+  #personal .project-grid { align-items: start; }
+  .card-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.7rem; margin-top: auto; }
+  #personal .card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,107,53,0.18), 0 0 24px rgba(255,107,53,0.07); }
+  #personal .card { display: flex; flex-direction: column; }
+  #personal .card-tags { margin-bottom: 0; flex-wrap: wrap; }
+
+  /* EDA badge on cards */
+  .eda-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.6rem;
+    background: rgba(57,255,20,0.1);
+    border: 1px solid rgba(57,255,20,0.3);
+    border-radius: 2px;
+    font-size: 0.65rem;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  .eda-badge::before { content: '★'; font-size: 0.6rem; }
+
+  #contact { max-width: 700px; }
+  .contact-intro { color: var(--muted); font-size: 0.9rem; margin-bottom: 3rem; line-height: 1.8; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; transition: opacity 0.3s, transform 0.3s; }
+  .contact-form.hidden { display: none; }
+  .contact-form.submitting { opacity: 0.5; pointer-events: none; }
+
+  .contact-success {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    background: var(--card-bg);
+    border: 1px solid rgba(57,255,20,0.25);
+    border-radius: 4px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(57,255,20,0.06);
+    animation: fadeInUp 0.5s ease;
+  }
+  .contact-success.visible { display: flex; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: none; } }
+  .contact-success-icon {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(57,255,20,0.1);
+    border: 1px solid rgba(57,255,20,0.4);
+    color: var(--accent2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .contact-success-title { font-family: var(--font-head); font-size: 1.4rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+  .contact-success-text { color: var(--muted); font-size: 0.85rem; line-height: 1.8; max-width: 480px; }
+  #contact-success-reset { margin-top: 0.6rem; }
+  .form-error {
+    display: none;
+    color: var(--accent3);
+    font-size: 0.8rem;
+    border: 1px solid rgba(255,107,53,0.3);
+    background: rgba(255,107,53,0.06);
+    border-radius: 3px;
+    padding: 0.8rem 1rem;
+  }
+  .form-error.visible { display: block; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .form-group input, .form-group textarea { background: var(--bg3); border: 1px solid var(--border); border-radius: 3px; padding: 0.8rem 1rem; color: var(--text); font-family: var(--font-mono); font-size: 0.85rem; outline: none; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 130px; }
+  .social-links { display: flex; gap: 1.5rem; margin-top: 2rem; }
+  .social-link { color: var(--muted); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+  .social-link:hover { color: var(--accent); }
+  .social-link::before { content: '→'; font-size: 1rem; }
+
+  footer { position: relative; z-index: 1; text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.75rem; letter-spacing: 0.05em; }
+  footer span { color: var(--accent); }
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-avatar { margin: 0 auto; }
+    #hero { padding-left: 2rem; padding-right: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    section { padding: 4rem 1.2rem; }
+    .project-grid { grid-template-columns: 1fr; }
+    .hero-name { font-size: 2.8rem; }
+    .hero-btns { flex-direction: column; }
+    .btn { text-align: center; }
+    .social-links { flex-direction: column; gap: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">NK<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#toolkit">Toolkit</a></li>
+    <li><a href="#analytics">Analytics</a></li>
+    <li><a href="#personal">Personal</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#toolkit" onclick="closeMobileMenu()">Toolkit</a>
+  <a href="#analytics" onclick="closeMobileMenu()">Analytics Projects</a>
+  <a href="#personal" onclick="closeMobileMenu()">Personal Projects</a>
+  <a href="#certificates" onclick="closeMobileMenu()">Certificates</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow">Available for opportunities</div>
+  <h1 class="hero-name">Nadir <span class="accent">Khan</span></h1>
+  <p class="hero-title">Data Analyst &amp; <span class="typewriter" id="typewriter">Data Scientist</span></p>
+  <p class="hero-desc">
+    Diploma in Computer Engineering. I turn raw data into insights — specializing in
+    Exploratory Data Analysis, building analytical dashboards, and writing
+    efficient SQL queries to solve real-world business problems.
+  </p>
+  <div class="hero-btns">
+    <a href="#analytics" class="btn btn-primary">View Projects</a>
+    <a href="#contact" class="btn btn-outline">Contact Me</a>
+  </div>
+  <div class="hero-scroll">scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">about</div>
+  <h2 class="section-title">Who I am  <span></span></h2>
+  <div class="about-grid reveal">
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:1.5rem;">
+      <div class="about-avatar">NK</div>
+      <div class="social-links" style="margin-top:0;">
+        <a href="https://github.com/NADIR789259/NADIR789259" target="_blank" class="social-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/nadirkhan-dataanalyst" target="_blank" class="social-link">LinkedIn</a>
+        <a href="mailto:nadirkhan5864@gmail.com" class="social-link">Email</a>
+      </div>
+    </div>
+    <div class="about-text">
+      <p>
+        I'm <strong style="color:var(--text)">Nadir Khan</strong>, a curious mind who believes numbers have stories to tell — you just need the right tools to listen.
+      </p>
+      <p>
+        I hold a <strong style="color:var(--text)">Diploma in Computer Engineering</strong> and have built hands-on expertise in Data Analysis, dashboards, and visualization. I love finding patterns in messy datasets and turning them into clear, actionable insights.
+      </p>
+      <p>
+        My strongest skill is <strong style="color:var(--accent2)">Exploratory Data Analysis (EDA)</strong> — I dig deep into datasets to uncover hidden patterns, outliers, and trends before any model is built. Clean data in, meaningful insights out.
+      </p>
+      <p>
+        From wrangling messy datasets and building dashboards to writing efficient SQL queries — I bring curiosity and precision to every problem I tackle.
+      </p>
+      <div class="skills-grid">
+        <!-- Core -->
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">Git</span>
+        <!-- EDA & Viz — highlighted -->
+        <span class="skill-tag-highlight">EDA ★</span>
+        <span class="skill-tag-highlight">Pandas</span>
+        <span class="skill-tag-highlight">Seaborn</span>
+        <span class="skill-tag-highlight">Matplotlib</span>
+        <!-- Data Cleaning -->
+        <span class="skill-tag">Data Cleaning</span>
+        <span class="skill-tag">NumPy</span>
+        <!-- BI & Reporting -->
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Looker Studio</span>
+        <span class="skill-tag">Excel</span>
+        <!-- Dev -->
+        <span class="skill-tag">HTML/CSS</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">Tkinter</span>
+        <span class="skill-tag">SQLite</span>
+        <span class="skill-tag">CustomTkinter</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLKIT -->
+<section id="toolkit">
+  <div class="section-label">skills</div>
+  <h2 class="section-title">My <span>Toolkit</span></h2>
+  <div class="toolkit-grid">
+
+    <div class="toolkit-card reveal">
+      <div class="toolkit-icon">🐍</div>
+      <div class="toolkit-title">Python</div>
+      <div class="toolkit-desc">Pandas, NumPy, Matplotlib, and Seaborn for data wrangling, cleaning, and visualization.</div>
+      <div class="toolkit-bar"><div class="toolkit-bar-fill" style="width: 85%;"></div></div>
+    </div>
+
+    <div class="toolkit-card reveal">
+      <div class="toolkit-icon">🗄️</div>
+      <div class="toolkit-title">SQL</div>
+      <div class="toolkit-desc">Complex queries, joins, aggregations, subqueries, and window functions for data retrieval.</div>
+      <div class="toolkit-bar"><div class="toolkit-bar-fill" style="width: 88%;"></div></div>
+    </div>
+
+    <div class="toolkit-card reveal">
+      <div class="toolkit-icon">📊</div>
+      <div class="toolkit-title">Power BI</div>
+      <div class="toolkit-desc">DAX, data modeling, and interactive dashboards for business reporting and decision-making.</div>
+      <div class="toolkit-bar"><div class="toolkit-bar-fill" style="width: 80%;"></div></div>
+    </div>
+
+    <div class="toolkit-card reveal">
+      <div class="toolkit-icon">📈</div>
+      <div class="toolkit-title">Excel</div>
+      <div class="toolkit-desc">Pivot tables, VLOOKUP, advanced formulas, and data cleaning for quick analysis.</div>
+      <div class="toolkit-bar"><div class="toolkit-bar-fill" style="width: 90%;"></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DATA ANALYTICS PROJECTS -->
+<section id="analytics">
+  <div class="section-label">data analytics</div>
+  <h2 class="section-title">Analytics <span>Projects</span></h2>
+  <div class="project-grid">
+
+    <div class="card reveal">
+      <div class="card-num">01 / analytics</div>
+      <div class="card-title">Sales Performance Dashboard</div>
+      <div class="card-desc">Interactive Power BI dashboard tracking KPIs across regions, products, and time periods. Includes drill-through reports and dynamic slicers for executive decision-making.</div>
+      <div class="card-tags">
+        <span class="tag tag-blue">Power BI</span>
+        <span class="tag tag-blue">SQL</span>
+        <span class="tag tag-blue">Excel</span>
+      </div>
+      <div class="card-links">
+        <a href="#" class="card-link">GitHub →</a>
+        <a href="#" class="card-link">Live Demo →</a>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-num">02 / analytics</div>
+      <div class="card-title">E-Commerce EDA &amp; Insights</div>
+      <div class="eda-badge">EDA Heavy</div>
+      <div class="card-desc">Deep exploratory analysis on 50K+ e-commerce records. Uncovered top-performing categories, seasonal trends, and customer churn signals. Full data cleaning pipeline before analysis.</div>
+      <div class="card-tags">
+        <span class="tag tag-blue">Python</span>
+        <span class="tag tag-blue">Pandas</span>
+        <span class="tag tag-blue">Matplotlib</span>
+        <span class="tag tag-blue">Seaborn</span>
+        <span class="tag tag-green">EDA</span>
+        <span class="tag tag-green">Data Cleaning</span>
+      </div>
+      <div class="card-links">
+        <a href="#" class="card-link">GitHub →</a>
+        <a href="#" class="card-link">Notebook →</a>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-num">03 / analytics</div>
+      <div class="card-title">Online Book Store — SQL Database Project</div>
+      <div class="card-desc">Designed a relational database for an online book store with Books, Customers, and Orders tables. Wrote SQL queries covering table creation, JOINs, GROUP BY, and aggregate functions to solve real-world business questions.</div>
+      <div class="card-tags">
+        <span class="tag tag-blue">PostgreSQL</span>
+        <span class="tag tag-blue">Database Design</span>
+        <span class="tag tag-blue">JOINs</span>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/NADIR789259/online-book-store-sql-" target="_blank" class="card-link">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-num">04 / analytics</div>
+      <div class="card-title">Wave Shoes Store — Sales Dashboard</div>
+      <div class="card-desc">Interactive Looker Studio dashboard analyzing ₹113.33M in sales across 7.8K+ transactions and 24K units sold. SQL queries used for data prep, with category, geographic, and state-wise profit breakdowns plus dynamic filters.</div>
+      <div class="card-tags">
+        <span class="tag tag-blue">SQL</span>
+        <span class="tag tag-blue">Looker Studio</span>
+        <span class="tag tag-blue">Data Viz</span>
+        <span class="tag tag-green">EDA</span>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/NADIR789259/-Wave-Shoes-Sales-Analytics-Looker-Studio-Dashboard" target="_blank" class="card-link">GitHub →</a>
+        <a href="https://lookerstudio.google.com/embed/u/0/reporting/3b0ceaf3-3c1a-4576-93e7-34e3922af8a4/page/1oIuF" target="_blank" class="card-link">Live Dashboard →</a>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-num">05 / analytics</div>
+      <div class="card-title">Ride Booking Analytics Dashboard</div>
+      <div class="eda-badge">EDA Heavy</div>
+      <div class="card-desc">End-to-end analysis of 1,50,000 ride bookings across 21 variables — covering booking status, vehicle demand, revenue, cancellations, and peak-hour trends. EDA &amp; data cleaning in Python, full Power BI dashboard with DAX measures and dynamic slicers.</div>
+      <div class="card-tags">
+        <span class="tag tag-blue">Power BI</span>
+        <span class="tag tag-blue">DAX</span>
+        <span class="tag tag-blue">Python</span>
+        <span class="tag tag-green">EDA</span>
+        <span class="tag tag-green">Pandas</span>
+        <span class="tag tag-green">Seaborn</span>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/NADIR789259/Ride-Bookings-Analysis-Power-Bi" target="_blank" class="card-link">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-num">06 / analytics</div>
+      <div class="card-title">Hospital Data Analysis — SQL</div>
+      <div class="card-desc">Analyzed hospital records covering patients, doctors, departments, and medical expenses. Used aggregate functions, GROUP BY, subqueries, and date arithmetic to find top departments, longest stays, and monthly expense trends.</div>
+      <div class="card-tags">
+        <span class="tag tag-blue">PostgreSQL</span>
+        <span class="tag tag-blue">Subqueries</span>
+        <span class="tag tag-blue">Aggregation</span>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/NADIR789259/hospital-data-analysis-sql" target="_blank" class="card-link">GitHub →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PERSONAL PROJECTS -->
+<section id="personal">
+  <div class="section-label">personal</div>
+  <h2 class="section-title">Personal <span style="color:var(--accent3)">Builds</span></h2>
+  <div class="project-grid">
+
+    <!-- PROJECT 01 — SRMS -->
+    <div class="card reveal">
+      <div class="card-num">01 / personal</div>
+      <div class="card-title">Student Result Management System</div>
+      <div class="card-desc">
+        Full-featured desktop app for the complete student academic lifecycle — course registration, enrollment, result entry, and grade reports — backed by SQLite and a polished Tkinter GUI.
+      </div>
+      <div class="card-stats">
+        <span class="stat-pill"><span class="pill-dot"></span>5 Screens</span>
+        <span class="stat-pill"><span class="pill-dot"></span>SQLite / rms.db</span>
+        <span class="stat-pill"><span class="pill-dot"></span>Real-time Clock</span>
+        <span class="stat-pill"><span class="pill-dot"></span>Desktop App</span>
+      </div>
+      <div class="card-divider"></div>
+      <ul class="card-features-compact">
+        <li><strong>Secure admin login</strong> with session management &amp; logout flow</li>
+        <li><strong>Full CRUD</strong> for courses, students, and results via ttk Treeview</li>
+        <li><strong>Auto-calculate</strong> pass/fail, percentage, and grade per subject</li>
+        <li><strong>Report viewer</strong> — search by roll number, print formatted result card</li>
+      </ul>
+      <div class="card-bottom">
+        <div class="card-tags">
+          <span class="tag tag-orange">Python</span>
+          <span class="tag tag-orange">Tkinter</span>
+          <span class="tag tag-orange">SQLite3</span>
+          <span class="tag tag-orange">ttk</span>
+          <span class="tag tag-orange">OOP</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/NADIR789259/Student-Result-Management-System-SRMS-" target="_blank" class="card-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 02 — LMS -->
+    <div class="card reveal">
+      <div class="card-num">02 / personal</div>
+      <div class="card-title">Library Management System — LMS</div>
+      <div class="card-desc">
+        Production-quality desktop LMS handling the complete book-lending lifecycle. Modern CustomTkinter UI, live-updating admin dashboard, modular OOP architecture, and automatic DB initialisation.
+      </div>
+      <div class="card-stats">
+        <span class="stat-pill"><span class="pill-dot"></span>CustomTkinter</span>
+        <span class="stat-pill"><span class="pill-dot"></span>SQLite / lib.db</span>
+        <span class="stat-pill"><span class="pill-dot"></span>6 Classes</span>
+        <span class="stat-pill"><span class="pill-dot"></span>Auto-refresh 2s</span>
+      </div>
+      <div class="card-divider"></div>
+      <ul class="card-features-compact">
+        <li><strong>Live KPI dashboard</strong> — Total Books, Students, Issued Books updating every 2s</li>
+        <li><strong>Secure login</strong> with show/hide password toggle &amp; account registration</li>
+        <li><strong>Book &amp; Student CRUD</strong> — add, edit, delete, search with ttk Treeview</li>
+        <li><strong>Centralised data layer</strong> with path-safe DB init, isolated <code style="color:var(--accent3);font-size:0.72rem">.venv</code>, and Pillow UI</li>
+      </ul>
+      <div class="card-bottom">
+        <div class="card-tags">
+          <span class="tag tag-orange">Python</span>
+          <span class="tag tag-orange">CustomTkinter</span>
+          <span class="tag tag-orange">SQLite3</span>
+          <span class="tag tag-orange">Pandas</span>
+          <span class="tag tag-orange">OOP</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/NADIR789259/Library-Management-System-LMS-" target="_blank" class="card-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="section-label">certifications</div>
+  <h2 class="section-title">Certificates &amp; <span>Courses</span></h2>
+  <div class="project-grid">
+
+    <div class="card reveal">
+      <div class="card-num">01 / certificate</div>
+      <div class="card-title">Microsoft Power BI (Self Learning)</div>
+      <div class="cert-issuer">Issued by <strong>Skill Course</strong> · ISO 9001:2015 Certified · March 2026</div>
+      <div class="card-desc">Completed a self-paced course covering Power BI fundamentals — data modeling, DAX basics, report design, and building interactive dashboards for business reporting.</div>
+      <div class="card-tags">
+        <span class="tag tag-blue">Power BI</span>
+        <span class="tag tag-blue">Data Modeling</span>
+        <span class="tag tag-blue">DAX</span>
+      </div>
+      <button class="cert-view-btn" onclick="openCertModal('certificates/powerbi.png')">View Certificate →</button>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-num">02 / certificate</div>
+      <div class="card-title">C &amp; C++ Programming Certification</div>
+      <div class="cert-issuer">Issued by <strong>iTronix Solutions</strong> · ISO 9001:2015 Certified · July 2025</div>
+      <div class="card-desc">Completed certification in C and C++ programming languages, covering core programming concepts, data structures, and problem-solving fundamentals — the foundation for analytical and logical thinking in data work.</div>
+      <div class="card-tags">
+        <span class="tag tag-blue">C</span>
+        <span class="tag tag-blue">C++</span>
+        <span class="tag tag-blue">Programming Fundamentals</span>
+      </div>
+      <button class="cert-view-btn" onclick="openCertModal('certificates/cpp.jpg')">View Certificate →</button>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-num">03 / certificate</div>
+      <div class="card-title">30-Days SQL Micro Course</div>
+      <div class="cert-issuer">Issued by <strong>Skill Course / CoursePe</strong> · ISO 9001:2015 Certified · January 2026</div>
+      <div class="card-desc">Completed an intensive 30-day SQL program covering querying, joins, aggregations, subqueries, and database fundamentals — directly applied across multiple analytics and SQL-based portfolio projects.</div>
+      <div class="card-tags">
+        <span class="tag tag-blue">SQL</span>
+        <span class="tag tag-blue">PostgreSQL</span>
+        <span class="tag tag-blue">Database Querying</span>
+      </div>
+      <button class="cert-view-btn" onclick="openCertModal('certificates/sql-course.jpg')">View Certificate →</button>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-num">04 / certificate</div>
+      <div class="card-title">Resume Writing &amp; Job Interviewing</div>
+      <div class="cert-issuer">Issued by <strong>HP LIFE / HP Foundation</strong> · July 2025</div>
+      <div class="card-desc">Completed HP LIFE's career-readiness course on building a tailored resume and cover letter, preparing for interviews, and using self-assessment as a tool for career growth and job search strategy.</div>
+      <div class="card-tags">
+        <span class="tag tag-blue">Resume Writing</span>
+        <span class="tag tag-blue">Interview Prep</span>
+        <span class="tag tag-blue">Career Skills</span>
+      </div>
+      <button class="cert-view-btn" onclick="openCertModal('certificates/hp-resume.jpg')">View Certificate →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATE MODAL -->
+<div class="cert-modal" id="cert-modal" onclick="if(event.target===this) closeCertModal()">
+  <div class="cert-modal-content">
+    <button class="cert-modal-close" onclick="closeCertModal()">Close ✕</button>
+    <img id="cert-modal-img" src="" alt="Certificate preview">
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">contact</div>
+  <h2 class="section-title">Let's <span>Talk</span></h2>
+  <p class="contact-intro reveal">
+    I'm open to internships, freelance data projects, and collaborations. Whether you have a dataset to analyze, a dashboard to build, or just want to connect — drop me a message.
+  </p>
+  <form
+    class="contact-form reveal"
+    action="https://formsubmit.co/ajax/nadirkhan5864@gmail.com"
+    method="POST"
+    id="contact-form"
+  >
+    <input type="hidden" name="_subject"  value="New message from your portfolio — Nadir Khan">
+    <input type="hidden" name="_captcha"  value="false">
+    <input type="hidden" name="_template" value="table">
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject" placeholder="What's this about?">
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Tell me what you're working on..." required></textarea>
+    </div>
+    <div class="form-error" id="form-error">Something went wrong sending your message. Please try again, or email me directly at nadirkhan5864@gmail.com.</div>
+    <div>
+      <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
+    </div>
+  </form>
+
+  <div class="contact-success" id="contact-success">
+    <div class="contact-success-icon">✓</div>
+    <h3 class="contact-success-title">Thanks for reaching out!</h3>
+    <p class="contact-success-text">
+      Your message has been sent successfully. I'll get back to you as soon as possible — usually within a day or two.
+    </p>
+    <button class="btn btn-outline" id="contact-success-reset">Send Another Message</button>
+  </div>
+
+  <div class="social-links reveal" style="margin-top:3rem;">
+    <a href="https://github.com/NADIR789259/NADIR789259" target="_blank" class="social-link">GitHub</a>
+    <a href="https://www.linkedin.com/in/nadirkhan-dataanalyst" target="_blank" class="social-link">LinkedIn</a>
+    <a href="mailto:nadirkhan5864@gmail.com" class="social-link">nadirkhan5864@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; built by <span>Nadir Khan</span> · 2025</p>
+</footer>
+
+<script>
+  // Typewriter
+  const words = ['Data Analyst', 'EDA Specialist', 'Python & SQL Developer', 'Dashboard Builder', 'Insight Creator'];
+  let wi = 0, ci = 0, deleting = false;
+  const tw = document.getElementById('typewriter');
+  function type() {
+    const word = words[wi];
+    if (!deleting) {
+      tw.textContent = word.substring(0, ci + 1);
+      ci++;
+      if (ci === word.length) { deleting = true; setTimeout(type, 1600); return; }
+    } else {
+      tw.textContent = word.substring(0, ci - 1);
+      ci--;
+      if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; }
+    }
+    setTimeout(type, deleting ? 60 : 90);
+  }
+  type();
+
+  // Hamburger
+  const ham = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-menu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  function closeMobileMenu() {
+    ham.classList.remove('open');
+    menu.classList.remove('open');
+  }
+
+  // Certificate modal
+  const certModal = document.getElementById('cert-modal');
+  const certModalImg = document.getElementById('cert-modal-img');
+  function openCertModal(src) {
+    certModalImg.src = src;
+    certModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCertModal() {
+    certModal.classList.remove('open');
+    document.body.style.overflow = '';
+    certModalImg.src = '';
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeCertModal();
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  // Contact form — AJAX submission with professional success state
+  const contactForm = document.getElementById('contact-form');
+  const contactSuccess = document.getElementById('contact-success');
+  const formError = document.getElementById('form-error');
+  const submitBtn = document.getElementById('submit-btn');
+  const resetBtn = document.getElementById('contact-success-reset');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      formError.classList.remove('visible');
+      contactForm.classList.add('submitting');
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(contactForm)
+        });
+
+        if (response.ok) {
+          contactForm.classList.add('hidden');
+          contactSuccess.classList.add('visible');
+          contactForm.reset();
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (err) {
+        formError.classList.add('visible');
+      } finally {
+        contactForm.classList.remove('submitting');
+        submitBtn.textContent = 'Send Message';
+      }
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      contactSuccess.classList.remove('visible');
+      contactForm.classList.remove('hidden');
+    });
+  }
+
+  // Nav active highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
