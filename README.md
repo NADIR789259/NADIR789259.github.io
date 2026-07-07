@@ -1,6 +1,6 @@
 # NADIR789259.github.io
-My personal portfolio — Data Analyst &amp; Data Scientist | Projects, Skills, Certifications
-# 🚀 Portfolio README
+My portfolio — Data Analyst &amp; Data Scientist | Projects, Skills, Certifications
+# 🚀 Portfolio
 
 ## 1. Hero Section
 ![Hero Screenshot](https://github.com/user-attachments/assets/74ec0af5-2e96-4ec2-9aea-fe3e83fa8e6f)
