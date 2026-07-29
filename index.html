@@ -592,6 +592,7 @@
     <li><a href="#toolkit">Toolkit</a></li>
     <li><a href="#analytics">Projects</a></li>
     <li><a href="#personal">Personal</a></li>
+    <li><a href="#ml-projects">ML Projects</a></li>
     <li><a href="#certificates">Certificates</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -605,6 +606,7 @@
   <a href="#toolkit"      onclick="closeMobileMenu()">Toolkit</a>
   <a href="#analytics"    onclick="closeMobileMenu()">Projects</a>
   <a href="#personal"     onclick="closeMobileMenu()">Personal</a>
+  <a href="#ml-projects"  onclick="closeMobileMenu()">ML Projects</a>
   <a href="#certificates" onclick="closeMobileMenu()">Certificates</a>
   <a href="#contact"      onclick="closeMobileMenu()">Contact</a>
 </div>
@@ -1040,6 +1042,113 @@
 
     <div class="card reveal">
       <div class="card-num">03 / personal</div>
+      <div class="card-title">StockFlow — Inventory &amp; Order Management</div>
+      <div class="card-desc">
+        Full-stack Django inventory and order management system built the way a small retail shop or warehouse would actually use one day-to-day — not another tutorial to-do app. Stock adjusts itself the moment an order is placed, and a dashboard flags what needs reordering before it runs out.
+      </div>
+      <div class="card-stats">
+        <span class="stat-pill"><span class="pill-dot"></span>Django 5.2</span>
+        <span class="stat-pill"><span class="pill-dot"></span>PostgreSQL</span>
+        <span class="stat-pill"><span class="pill-dot"></span>Role-Based Access</span>
+        <span class="stat-pill"><span class="pill-dot"></span>PDF Invoices</span>
+      </div>
+      <div class="card-divider"></div>
+      <ul class="card-features-compact">
+        <li><strong>Auto stock adjustment</strong> via Django signals on Purchase &amp; Sales orders, with overselling protection</li>
+        <li><strong>Low-stock dashboard</strong> and a <strong>sales report</strong> — 30-day revenue &amp; top products via ORM aggregation</li>
+        <li><strong>PDF invoices</strong> generated on demand for every sale (ReportLab)</li>
+        <li><strong>Role-based access</strong> — Owner and Staff see and can do different things</li>
+      </ul>
+      <div class="card-bottom">
+        <div class="card-tags">
+          <span class="tag tag-orange">Python</span>
+          <span class="tag tag-orange">Django</span>
+          <span class="tag tag-orange">PostgreSQL</span>
+          <span class="tag tag-orange">Bootstrap 5</span>
+          <span class="tag tag-orange">ReportLab</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/NADIR789259/stockflow" target="_blank" class="card-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-num">04 / personal</div>
+      <div class="card-title">Billing System — Invoice Management App</div>
+      <div class="card-desc">
+        Lightweight Django invoicing app built to practice core backend fundamentals — a custom user model, class-based CRUD views, form validation, and Django admin customization, wrapped in a clean, card-based UI.
+      </div>
+      <div class="card-stats">
+        <span class="stat-pill"><span class="pill-dot"></span>Django 6.0</span>
+        <span class="stat-pill"><span class="pill-dot"></span>Custom Auth</span>
+        <span class="stat-pill"><span class="pill-dot"></span>Invoice CRUD</span>
+        <span class="stat-pill"><span class="pill-dot"></span>Admin Integration</span>
+      </div>
+      <div class="card-divider"></div>
+      <ul class="card-features-compact">
+        <li><strong>Custom user model</strong> (<code style="color:#e8a070;font-size:0.7rem">CustomUser</code>) built before the first migration, not bolted on after</li>
+        <li><strong>Full invoice CRUD</strong> via Django's class-based generic views (List/Detail/Create/Update/Delete)</li>
+        <li><strong>Custom validation</strong> — <code style="color:#e8a070;font-size:0.7rem">clean_amount()</code> ensures invoice amounts are always greater than zero</li>
+        <li><strong>Django admin integration</strong> — invoices searchable and filterable by payment status and date</li>
+      </ul>
+      <div class="card-bottom">
+        <div class="card-tags">
+          <span class="tag tag-orange">Python</span>
+          <span class="tag tag-orange">Django</span>
+          <span class="tag tag-orange">SQLite</span>
+          <span class="tag tag-orange">CSS</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/NADIR789259/env_billing" target="_blank" class="card-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ MACHINE LEARNING PROJECTS ═══════ -->
+<section id="ml-projects">
+  <div class="s-eyebrow">machine learning</div>
+  <h2 class="s-title">ML <span>Projects</span></h2>
+  <div class="project-grid">
+
+    <div class="card reveal">
+      <div class="card-num">01 / ml</div>
+      <div class="card-title">Customer Churn Prediction System</div>
+      <div class="card-desc">
+        End-to-end ML project predicting whether a bank customer will churn — the full pipeline from raw data through EDA, leak-free preprocessing, and Logistic Regression training to a deployed, interactive Streamlit app. Reports honest, class-wise metrics rather than a single headline accuracy figure, given the imbalance in the underlying data.
+      </div>
+      <div class="card-stats">
+        <span class="stat-pill"><span class="pill-dot"></span>10K Customers</span>
+        <span class="stat-pill"><span class="pill-dot"></span>80.8% Accuracy</span>
+        <span class="stat-pill"><span class="pill-dot"></span>Streamlit App</span>
+        <span class="stat-pill"><span class="pill-dot"></span>Logistic Regression</span>
+      </div>
+      <div class="card-divider"></div>
+      <ul class="card-features-compact">
+        <li><strong>Full ML workflow</strong> — EDA, preprocessing, model training &amp; evaluation, deployment</li>
+        <li><strong>Leak-free preprocessing</strong> — One-Hot Encoding + StandardScaler fit only on the train split</li>
+        <li><strong>Class-wise evaluation</strong> — precision, recall, F1 &amp; ROC-AUC reported by class on an imbalanced churn dataset</li>
+        <li><strong>Live predictions</strong> with churn probability through an interactive Streamlit interface</li>
+      </ul>
+      <div class="card-bottom">
+        <div class="card-tags">
+          <span class="tag tag-orange">Python</span>
+          <span class="tag tag-orange">Scikit-learn</span>
+          <span class="tag tag-orange">Pandas</span>
+          <span class="tag tag-orange">Streamlit</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/NADIR789259/customer-churn-prediction" target="_blank" class="card-link">GitHub →</a>
+          <a href="https://ml-customer-churn.streamlit.app/" target="_blank" class="card-link">Live Demo →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-num">02 / ml</div>
       <div class="card-title">Fake News Detection AI</div>
       <div class="card-desc">
         Machine learning web app that classifies news articles as Real or Fake using an NLP text-cleaning pipeline, TF-IDF vectorization, and a Logistic Regression classifier — wrapped in an interactive Streamlit UI with live confidence scoring.
