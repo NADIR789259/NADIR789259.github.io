@@ -591,8 +591,8 @@
     <li><a href="#about">About</a></li>
     <li><a href="#toolkit">Toolkit</a></li>
     <li><a href="#analytics">Projects</a></li>
-    <li><a href="#personal">Personal</a></li>
     <li><a href="#ml-projects">ML Projects</a></li>
+    <li><a href="#personal">Personal</a></li>
     <li><a href="#certificates">Certificates</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -605,8 +605,8 @@
   <a href="#about"        onclick="closeMobileMenu()">About</a>
   <a href="#toolkit"      onclick="closeMobileMenu()">Toolkit</a>
   <a href="#analytics"    onclick="closeMobileMenu()">Projects</a>
-  <a href="#personal"     onclick="closeMobileMenu()">Personal</a>
   <a href="#ml-projects"  onclick="closeMobileMenu()">ML Projects</a>
+  <a href="#personal"     onclick="closeMobileMenu()">Personal</a>
   <a href="#certificates" onclick="closeMobileMenu()">Certificates</a>
   <a href="#contact"      onclick="closeMobileMenu()">Contact</a>
 </div>
@@ -744,6 +744,7 @@
           <span class="sk">Database Design</span>
           <span class="sk">Subqueries</span>
           <span class="sk">Window Functions</span>
+          <span class="sk">CTEs</span>
         </div>
 
         <div class="skills-cat-label">BI &amp; Visualization</div>
@@ -756,12 +757,23 @@
           <span class="sk">Figma</span>
         </div>
 
-        <div class="skills-cat-label">Machine Learning &amp; Data Sourcing</div>
+        <div class="skills-cat-label">Machine Learning &amp; NLP</div>
         <div class="skills-row">
+          <span class="sk sk-gold">Scikit-learn</span>
+          <span class="sk sk-gold">Logistic Regression</span>
+          <span class="sk sk-gold">NLTK</span>
+          <span class="sk sk-gold">TF-IDF</span>
           <span class="sk">ML Fundamentals</span>
+          <span class="sk">Data Preprocessing</span>
           <span class="sk">Web Scraping</span>
           <span class="sk">BeautifulSoup</span>
-          <span class="sk">Data Preprocessing</span>
+        </div>
+
+        <div class="skills-cat-label">Backend &amp; Web</div>
+        <div class="skills-row">
+          <span class="sk sk-gold">Django</span>
+          <span class="sk">Bootstrap 5</span>
+          <span class="sk">ReportLab</span>
         </div>
 
         <div class="skills-cat-label">Development &amp; Tools</div>
@@ -770,6 +782,7 @@
           <span class="sk">HTML / CSS</span>
           <span class="sk">Tkinter</span>
           <span class="sk">CustomTkinter</span>
+          <span class="sk">Google Colab</span>
         </div>
       </div>
     </div>
@@ -798,6 +811,18 @@
       <div class="toolkit-title">Power BI</div>
       <div class="toolkit-desc">DAX measures, data modeling, Power Query transformations, and interactive dashboards for business reporting.</div>
       <div class="toolkit-bar"><div class="toolkit-bar-fill" style="width:80%"></div></div>
+    </div>
+    <div class="toolkit-card reveal">
+      <div class="toolkit-icon">🤖</div>
+      <div class="toolkit-title">Machine Learning</div>
+      <div class="toolkit-desc">Scikit-learn, Logistic Regression, and NLP (NLTK, TF-IDF) — from EDA and leak-free preprocessing to deployed, interactive prediction apps.</div>
+      <div class="toolkit-bar"><div class="toolkit-bar-fill" style="width:72%"></div></div>
+    </div>
+    <div class="toolkit-card reveal">
+      <div class="toolkit-icon">🏗️</div>
+      <div class="toolkit-title">Django</div>
+      <div class="toolkit-desc">Models, migrations, signals, class-based views, and admin customization — building full-stack apps like StockFlow and a billing system.</div>
+      <div class="toolkit-bar"><div class="toolkit-bar-fill" style="width:75%"></div></div>
     </div>
     <div class="toolkit-card reveal">
       <div class="toolkit-icon">📈</div>
@@ -968,6 +993,82 @@
   </div>
 </section>
 
+<!-- ═══════ MACHINE LEARNING PROJECTS ═══════ -->
+<section id="ml-projects">
+  <div class="s-eyebrow">machine learning</div>
+  <h2 class="s-title">ML <span>Projects</span></h2>
+  <div class="project-grid">
+
+    <div class="card reveal">
+      <div class="card-num">01 / ml</div>
+      <div class="card-title">Customer Churn Prediction System</div>
+      <div class="card-desc">
+        End-to-end ML project predicting whether a bank customer will churn — the full pipeline from raw data through EDA, leak-free preprocessing, and Logistic Regression training to a deployed, interactive Streamlit app. Reports honest, class-wise metrics rather than a single headline accuracy figure, given the imbalance in the underlying data.
+      </div>
+      <div class="card-stats">
+        <span class="stat-pill"><span class="pill-dot"></span>10K Customers</span>
+        <span class="stat-pill"><span class="pill-dot"></span>80.8% Accuracy</span>
+        <span class="stat-pill"><span class="pill-dot"></span>Streamlit App</span>
+        <span class="stat-pill"><span class="pill-dot"></span>Logistic Regression</span>
+      </div>
+      <div class="card-divider"></div>
+      <ul class="card-features-compact">
+        <li><strong>Full ML workflow</strong> — EDA, preprocessing, model training &amp; evaluation, deployment</li>
+        <li><strong>Leak-free preprocessing</strong> — One-Hot Encoding + StandardScaler fit only on the train split</li>
+        <li><strong>Class-wise evaluation</strong> — precision, recall, F1 &amp; ROC-AUC reported by class on an imbalanced churn dataset</li>
+        <li><strong>Live predictions</strong> with churn probability through an interactive Streamlit interface</li>
+      </ul>
+      <div class="card-bottom">
+        <div class="card-tags">
+          <span class="tag tag-orange">Python</span>
+          <span class="tag tag-orange">Scikit-learn</span>
+          <span class="tag tag-orange">Pandas</span>
+          <span class="tag tag-orange">Streamlit</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/NADIR789259/customer-churn-prediction" target="_blank" class="card-link">GitHub →</a>
+          <a href="https://ml-customer-churn.streamlit.app/" target="_blank" class="card-link">Live Demo →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-num">02 / ml</div>
+      <div class="card-title">Fake News Detection AI</div>
+      <div class="card-desc">
+        Machine learning web app that classifies news articles as Real or Fake using an NLP text-cleaning pipeline, TF-IDF vectorization, and a Logistic Regression classifier — wrapped in an interactive Streamlit UI with live confidence scoring.
+      </div>
+      <div class="card-stats">
+        <span class="stat-pill"><span class="pill-dot"></span>97% Accuracy</span>
+        <span class="stat-pill"><span class="pill-dot"></span>45.7K Articles</span>
+        <span class="stat-pill"><span class="pill-dot"></span>Streamlit App</span>
+        <span class="stat-pill"><span class="pill-dot"></span>Logistic Regression</span>
+      </div>
+      <div class="card-divider"></div>
+      <ul class="card-features-compact">
+        <li><strong>NLP pipeline</strong> — lowercasing, punctuation removal, tokenization, stopword removal &amp; Porter stemming</li>
+        <li><strong>TF-IDF + Logistic Regression</strong> trained on the WELFake dataset (~45.7K labeled articles)</li>
+        <li><strong>Live predictions</strong> with confidence score and full probability breakdown</li>
+        <li><strong>Cached inference</strong> via <code style="color:#e8a070;font-size:0.7rem">st.cache_resource</code> for fast repeat predictions</li>
+      </ul>
+      <div class="card-bottom">
+        <div class="card-tags">
+          <span class="tag tag-orange">Python</span>
+          <span class="tag tag-orange">Scikit-learn</span>
+          <span class="tag tag-orange">NLTK</span>
+          <span class="tag tag-orange">Streamlit</span>
+          <span class="tag tag-orange">TF-IDF</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/NADIR789259/Fake-News-Detection-AI" target="_blank" class="card-link">GitHub →</a>
+          <a href="https://fake-news-detector-nadir.streamlit.app/" target="_blank" class="card-link">Live Demo →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ═══════ PERSONAL PROJECTS ═══════ -->
 <section id="personal">
   <div class="s-eyebrow">personal</div>
@@ -1101,82 +1202,6 @@
         </div>
         <div class="card-links">
           <a href="https://github.com/NADIR789259/env_billing" target="_blank" class="card-link">GitHub →</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══════ MACHINE LEARNING PROJECTS ═══════ -->
-<section id="ml-projects">
-  <div class="s-eyebrow">machine learning</div>
-  <h2 class="s-title">ML <span>Projects</span></h2>
-  <div class="project-grid">
-
-    <div class="card reveal">
-      <div class="card-num">01 / ml</div>
-      <div class="card-title">Customer Churn Prediction System</div>
-      <div class="card-desc">
-        End-to-end ML project predicting whether a bank customer will churn — the full pipeline from raw data through EDA, leak-free preprocessing, and Logistic Regression training to a deployed, interactive Streamlit app. Reports honest, class-wise metrics rather than a single headline accuracy figure, given the imbalance in the underlying data.
-      </div>
-      <div class="card-stats">
-        <span class="stat-pill"><span class="pill-dot"></span>10K Customers</span>
-        <span class="stat-pill"><span class="pill-dot"></span>80.8% Accuracy</span>
-        <span class="stat-pill"><span class="pill-dot"></span>Streamlit App</span>
-        <span class="stat-pill"><span class="pill-dot"></span>Logistic Regression</span>
-      </div>
-      <div class="card-divider"></div>
-      <ul class="card-features-compact">
-        <li><strong>Full ML workflow</strong> — EDA, preprocessing, model training &amp; evaluation, deployment</li>
-        <li><strong>Leak-free preprocessing</strong> — One-Hot Encoding + StandardScaler fit only on the train split</li>
-        <li><strong>Class-wise evaluation</strong> — precision, recall, F1 &amp; ROC-AUC reported by class on an imbalanced churn dataset</li>
-        <li><strong>Live predictions</strong> with churn probability through an interactive Streamlit interface</li>
-      </ul>
-      <div class="card-bottom">
-        <div class="card-tags">
-          <span class="tag tag-orange">Python</span>
-          <span class="tag tag-orange">Scikit-learn</span>
-          <span class="tag tag-orange">Pandas</span>
-          <span class="tag tag-orange">Streamlit</span>
-        </div>
-        <div class="card-links">
-          <a href="https://github.com/NADIR789259/customer-churn-prediction" target="_blank" class="card-link">GitHub →</a>
-          <a href="https://ml-customer-churn.streamlit.app/" target="_blank" class="card-link">Live Demo →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-num">02 / ml</div>
-      <div class="card-title">Fake News Detection AI</div>
-      <div class="card-desc">
-        Machine learning web app that classifies news articles as Real or Fake using an NLP text-cleaning pipeline, TF-IDF vectorization, and a Logistic Regression classifier — wrapped in an interactive Streamlit UI with live confidence scoring.
-      </div>
-      <div class="card-stats">
-        <span class="stat-pill"><span class="pill-dot"></span>97% Accuracy</span>
-        <span class="stat-pill"><span class="pill-dot"></span>45.7K Articles</span>
-        <span class="stat-pill"><span class="pill-dot"></span>Streamlit App</span>
-        <span class="stat-pill"><span class="pill-dot"></span>Logistic Regression</span>
-      </div>
-      <div class="card-divider"></div>
-      <ul class="card-features-compact">
-        <li><strong>NLP pipeline</strong> — lowercasing, punctuation removal, tokenization, stopword removal &amp; Porter stemming</li>
-        <li><strong>TF-IDF + Logistic Regression</strong> trained on the WELFake dataset (~45.7K labeled articles)</li>
-        <li><strong>Live predictions</strong> with confidence score and full probability breakdown</li>
-        <li><strong>Cached inference</strong> via <code style="color:#e8a070;font-size:0.7rem">st.cache_resource</code> for fast repeat predictions</li>
-      </ul>
-      <div class="card-bottom">
-        <div class="card-tags">
-          <span class="tag tag-orange">Python</span>
-          <span class="tag tag-orange">Scikit-learn</span>
-          <span class="tag tag-orange">NLTK</span>
-          <span class="tag tag-orange">Streamlit</span>
-          <span class="tag tag-orange">TF-IDF</span>
-        </div>
-        <div class="card-links">
-          <a href="https://github.com/NADIR789259/Fake-News-Detection-AI" target="_blank" class="card-link">GitHub →</a>
-          <a href="https://fake-news-detector-nadir.streamlit.app/" target="_blank" class="card-link">Live Demo →</a>
         </div>
       </div>
     </div>
